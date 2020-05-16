@@ -4,3 +4,5 @@
 *.pptx
 #Ignore txt file
 *.txt
+#Ignire database file
+*.tar
