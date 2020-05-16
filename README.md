@@ -1,4 +1,4 @@
-###Investigate-a-Relational-Database
+# Investigate-a-Relational-Database
 PostgreSQL project
 
 ### Date created
@@ -29,7 +29,17 @@ Finally, for each of these top 10 paying customers, I would like to find out the
 
 
 ### Files used
+1. In this project I used PostgreSQL sample database name  DVD rental,  that  can use for learning and practice PostgreSQL.
+The DVD rental database represents the business processes of a DVD rental store.
 
+2. DVD Rental ER Model for the relation between tables
+
+3. link :
+ [PostgreSQL Sample Database](https://www.postgresqltutorial.com/postgresql-sample-database)
+
+
+### Report
+ The graphical representation of this project shows on sql-project-Presentation.pdf file shows
 
 ### Credits
 This project is under Udacity nondegre course of "programming for data science with python ". Anyone can use this for educational purpose with proper permission.
