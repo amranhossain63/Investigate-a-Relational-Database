@@ -2,8 +2,11 @@
 We want to understand more about the movies that families are watching.The following categories are considered family movies: Animation, Children, Classics, Comedy, Family and Music. Create a query that lists each movie, the film category it is classified in, and the number of times it has been rented out.
 */
 -- New SQL queries  as per suggestion
-SELECT DISTINCT     category_name,  COUNT(*)  AS rental_count
-FROM (SELECT   film.title AS film_title,
+SELECT DISTINCT
+    category_name,
+    COUNT(*)  AS rental_count
+FROM (SELECT
+  film.title AS film_title,
   category.name AS category_name,
   rental.rental_id AS rentalid
 FROM film
@@ -19,33 +22,14 @@ WHERE category.name IN ('Animation', 'Children', 'Classics', 'Comedy', 'Family',
 GROUP by 1
 ORDER BY 2 DESC;
 
-/*SELECT DISTINCT
-  film_title,
-  category_name,
-  COUNT(rentalid) OVER (PARTITION BY film_title) AS rental_count
-FROM (SELECT
-  film.title AS film_title,
-  category.name AS category_name,
-  rental.rental_id AS rentalid
-FROM film
-JOIN film_category
-  ON film.film_id = film_Category.film_id
-JOIN category
-  ON category.category_id = film_category.category_id
-JOIN inventory
-  ON film.film_id = inventory.film_id
-JOIN rental
-  ON inventory.inventory_id = rental.inventory_id
-WHERE category.name IN ('Animation', 'Children', 'Classics', 'Comedy', 'Family', 'Music')) flim_table
-ORDER BY 2, 1;*/
-
 
 /*Question 2
 Finally, provide a table with the family-friendly film category, each of the quartiles, and the corresponding count of movies within each combination of film category for each corresponding rental duration category.
 */
 
 
-WITH family_movies AS (SELECT
+WITH family_movies
+AS (SELECT
   category.name AS category_name,
   NTILE(4) OVER (ORDER BY film.rental_duration) AS standard_quartile
 FROM category
@@ -89,7 +73,8 @@ Also, it will be tremendously helpful if you can identify the customer name who 
 
 
 WITH top_10_payment_tab
-AS (SELECT   p.customer_id,
+AS (SELECT
+  p.customer_id,
   SUM(p.amount) AS sum_payment
 FROM payment p
 WHERE payment_date BETWEEN '2007-01-01' AND '2007-12-31'
@@ -98,7 +83,8 @@ ORDER BY 2 DESC
 LIMIT 10),
 
 payment_table
-AS (SElECT DATE_TRUNC('month',p.payment_date) AS payment_month,
+AS (SElECT
+  DATE_TRUNC('month',p.payment_date) AS payment_month,
   c.first_name || ' '|| c.last_name AS customer_fullname,
   COUNT(p.amount) AS payment_per_month,
   SUM(p.amount) AS monthly_total
@@ -110,7 +96,8 @@ JOIN payment p
 GROUP BY 1,2
 ORDER BY 2,1 )
 
-SELECT   *,
+SELECT
+  *,
   LEAD(monthly_total) OVER (PARTITION BY customer_fullname) AS LEAD,
   LEAD(monthly_total) OVER (PARTITION BY customer_fullname) - payment_table.monthly_total AS monthly_difference
 FROM payment_table;
