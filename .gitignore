@@ -1,0 +1,6 @@
+#ignore csv file
+*.csv
+#ignore ppt fie
+*.pptx
+#Ignore txt file
+*.txt
