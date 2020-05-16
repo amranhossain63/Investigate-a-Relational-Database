@@ -22,26 +22,6 @@ WHERE category.name IN ('Animation', 'Children', 'Classics', 'Comedy', 'Family',
 GROUP by 1
 ORDER BY 2 DESC;
 
-/*SELECT DISTINCT
-  film_title,
-  category_name,
-  COUNT(rentalid) OVER (PARTITION BY film_title) AS rental_count
-FROM (SELECT
-  film.title AS film_title,
-  category.name AS category_name,
-  rental.rental_id AS rentalid
-FROM film
-JOIN film_category
-  ON film.film_id = film_Category.film_id
-JOIN category
-  ON category.category_id = film_category.category_id
-JOIN inventory
-  ON film.film_id = inventory.film_id
-JOIN rental
-  ON inventory.inventory_id = rental.inventory_id
-WHERE category.name IN ('Animation', 'Children', 'Classics', 'Comedy', 'Family', 'Music')) flim_table
-ORDER BY 2, 1;*/
-
 
 /*Question 2
 Finally, provide a table with the family-friendly film category, each of the quartiles, and the corresponding count of movies within each combination of film category for each corresponding rental duration category.
