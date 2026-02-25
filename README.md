@@ -2,7 +2,7 @@
 PostgreSQL project
 
 ### Date created
-03rd May 2020
+May 2020
 
 ### Project Title
 Investigate a Relational Database with PostgreSQL
