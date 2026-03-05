@@ -1,4 +1,4 @@
-# Investigate-a-Relational-Database
+# Investigate a Relational Database
 PostgreSQL project
 
 ### Date created
